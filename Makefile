@@ -19,6 +19,17 @@ init:
 	read -p "Please enter your repo:" REPO; \
 	echo -e "$${DOMAIN}\n$${REPO}" > ${FILE}
 
+build:
+	pip install --user --upgrade setuptools wheel
+	python setup.py sdist bdist_wheel
+
 push:
-	pip install awscli twine && \
-	aws codeartifact login --tool twine --domain rare --repository coding
+	pip install --user --upgrade awscli twine && \
+	aws codeartifact login --tool twine --domain ${DOMAIN} --repository ${REPO} && \
+	twine upload --repository codeartifact dist/*
+
+clean:
+	rm -Rf build dist library_name.egg-info
+
+get_token:
+	aws codeartifact get-authorization-token --domain ${DOMAIN} --query authorizationToken --output text

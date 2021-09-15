@@ -8,12 +8,12 @@ with open(os.path.join(HERE, 'README.md')) as f:
     README = f.read()
 
 setup(
-    name='library_name',
+    name='library-name',
     long_description=README,
-    version='0.0.1',
+    version='0.0.2',
     setup_requires=[],
     tests_require=[],
-    packages=[],
+    packages=["example"],
     author='Leon Patmore',
     description=''
 )
