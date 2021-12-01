@@ -10,9 +10,8 @@ with open(os.path.join(HERE, 'README.md')) as f:
 setup(
     name='library-name',
     long_description=README,
-    version='0.0.2',
-    setup_requires=[],
-    tests_require=[],
+    version='0.0.1',
+    install_requires=[],
     packages=["example"],
     author='Leon Patmore',
     description=''
