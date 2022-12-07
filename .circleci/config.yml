@@ -11,6 +11,7 @@ jobs:
       - checkout
       - python/install-packages:
           pkg-manager: pipenv
+          args: "--dev"
       - run:
           name: Run tests
           command: make test
