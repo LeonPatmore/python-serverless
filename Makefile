@@ -33,3 +33,9 @@ clean:
 
 get_token:
 	aws codeartifact get-authorization-token --domain ${DOMAIN} --query authorizationToken --output text
+
+setup:
+	pipenv install --dev
+
+test:
+	pipenv run pytest
