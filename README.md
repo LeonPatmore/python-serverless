@@ -1,26 +1,19 @@
-# Python Library Template
+# Python Serverless
 
-## How to Use
+Python serverless is a small Python module which allows you to write cloud-agnostic serverless functions!
 
-1. Setup your CodeArtifact project.
-2. Run `make init` and pass your domain and repo.
-3. Ensure that your `setup.py` has been configured correctly.
-4. Run `make build`.
-5. Run `make push`.
+## Supported Cloud Providers
 
-## Defining as Dependency
+- AWS
+- GCP
 
-Add this to your pipfile:
+## Usage Example
 
-```
-[[source]]
-url = "https://aws:$CODEARTIFACT_AUTH_TOKEN@my_domain-111122223333.d.codeartifact.eu-west-1.amazonaws.com/pypi/repo/simple/"
-verify_ssl = true
-name = "aws"
-```
+```python
+from python_serverless.serverless_function import serverless_function#
+from python_serverless.serverless_http import HttpRequest, HttpResponse
 
-Make sure you export the auth token before you install or lock:
-
-```shell
-CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain my_domain --domain-owner 111122223333 --query authorizationToken --output text`
+@serverless_function()
+def handler(request: HttpRequest) -> HttpResponse:
+    return HttpResponse(200, f"{request.body} received, looks good!")
 ```

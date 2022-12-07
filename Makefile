@@ -20,11 +20,11 @@ init:
 	echo -e "$${DOMAIN}\n$${REPO}" > ${FILE}
 
 build:
-	pip install --user --upgrade setuptools wheel
+	pip install --upgrade setuptools wheel
 	python setup.py sdist bdist_wheel
 
 push:
-	pip install --user --upgrade awscli twine && \
+	pip install --upgrade awscli twine && \
 	aws codeartifact login --tool twine --domain ${DOMAIN} --repository ${REPO} && \
 	twine upload --repository codeartifact dist/*
 
