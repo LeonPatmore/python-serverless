@@ -3,8 +3,8 @@ from ..serverless_http import ProviderHttpHandler, HttpRequest, HttpResponse
 
 class AwsHandler(ProviderHttpHandler):
 
-    def generate_request(self, **kwargs) -> HttpRequest:
-        event = kwargs["event"]
+    def generate_request(self, *args, **kwargs) -> HttpRequest:
+        event = args[0]
         return HttpRequest(event["body"])
 
     def convert_to_response(self, response: HttpResponse):
@@ -14,5 +14,5 @@ class AwsHandler(ProviderHttpHandler):
             "body": response.body
         }
 
-    def supports(self, **kwargs) -> bool:
-        return "event" in kwargs and "context" in kwargs
+    def supports(self, *args, **kwargs) -> bool:
+        return len(args) == 2

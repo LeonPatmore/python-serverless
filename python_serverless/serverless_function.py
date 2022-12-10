@@ -14,11 +14,11 @@ def serverless_function(handlers=None):
 
     def serverless_decorator(func: callable):
         @functools.wraps(func)
-        def generic_func(**kwargs):
+        def generic_func(*args, **kwargs):
 
             for handler in handlers:
-                if handler.supports(**kwargs):
-                    request = handler.generate_request(**kwargs)
+                if handler.supports(*args, **kwargs):
+                    request = handler.generate_request(*args, **kwargs)
                     response = func(request)
                     return handler.convert_to_response(response)
             raise Exception("Not sure how to handle these kwargs: " + str(kwargs.keys()))

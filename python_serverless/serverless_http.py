@@ -13,10 +13,10 @@ class HttpResponse:
 
 class ProviderHttpHandler:
 
-    def supports(self, **kwargs) -> bool:
+    def supports(self, *args, **kwargs) -> bool:
         raise NotImplementedError
 
-    def generate_request(self, **kwargs) -> HttpRequest:
+    def generate_request(self, *args, **kwargs) -> HttpRequest:
         raise NotImplementedError
 
     def convert_to_response(self, response: HttpResponse):

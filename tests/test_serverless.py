@@ -19,7 +19,7 @@ def test_aws():
     context = {
         "function_name": "name"
     }
-    response = function_example(event=event, context=context)
+    response = function_example(event, context)
 
     assert "hello received, looks good!" == response["body"]
     assert response["isBase64Encoded"]
