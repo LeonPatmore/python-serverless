@@ -1,6 +1,6 @@
 import os
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 
@@ -10,9 +10,9 @@ with open(os.path.join(HERE, 'README.md')) as f:
 setup(
     name='python-serverless',
     long_description=README,
-    version='0.0.1',
+    version='0.0.2',
     install_requires=[],
-    packages=["python_serverless"],
+    packages=find_packages(exclude=["tests"]),
     author='Leon Patmore',
     description=''
 )
