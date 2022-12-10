@@ -10,7 +10,7 @@ with open(os.path.join(HERE, 'README.md')) as f:
 setup(
     name='python-serverless',
     long_description=README,
-    version='0.0.3',
+    version='0.0.4',
     install_requires=[],
     packages=find_packages(exclude=["tests"]),
     author='Leon Patmore',

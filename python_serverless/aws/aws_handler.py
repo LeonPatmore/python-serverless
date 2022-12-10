@@ -1,3 +1,5 @@
+import os
+
 from ..serverless_http import ProviderHttpHandler, HttpRequest, HttpResponse
 
 
@@ -15,4 +17,4 @@ class AwsHandler(ProviderHttpHandler):
         }
 
     def supports(self, *args, **kwargs) -> bool:
-        return len(args) == 2
+        return "AWS_LAMBDA_FUNCTION_NAME" in os.environ.keys()
