@@ -1,7 +1,23 @@
+from enum import Enum
+
+
+class HttpMethod(Enum):
+
+    GET = "get"
+    POST = "post"
+
+
 class HttpRequest:
 
-    def __init__(self, body: str):
+    def __init__(self, body: str, method: HttpMethod or str):
         self.body = body
+        self.method = self.get_method_as_enum(method)
+
+    @staticmethod
+    def get_method_as_enum(method: HttpMethod or str) -> HttpMethod:
+        if isinstance(method, str):
+            return HttpMethod(method.lower())
+        return method
 
 
 class HttpResponse:

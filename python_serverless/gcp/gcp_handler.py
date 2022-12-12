@@ -7,7 +7,7 @@ class GcpHandler(ProviderHttpHandler):
 
     def generate_request(self, *args, **kwargs) -> HttpRequest:
         event = args[0]
-        return HttpRequest(event.data.decode("utf-8"))
+        return HttpRequest(body=event.data.decode("utf-8"), method=event.method)
 
     def convert_to_response(self, response: HttpResponse):
         return response.body, response.status, {}

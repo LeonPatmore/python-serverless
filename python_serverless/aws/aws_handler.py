@@ -7,7 +7,7 @@ class AwsHandler(ProviderHttpHandler):
 
     def generate_request(self, *args, **kwargs) -> HttpRequest:
         event = args[0]
-        return HttpRequest(event["body"])
+        return HttpRequest(event["body"], event["httpMethod"])
 
     def convert_to_response(self, response: HttpResponse):
         return {
